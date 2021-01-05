@@ -14,7 +14,7 @@ from __future__ import print_function, division
 import json, numpy as np, matplotlib, matplotlib.pyplot as plt
 import cartopy.crs as ccrs, cartopy.feature as cfeature, cartopy.io.img_tiles as cimgt
 from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
-
+from datetime import datetime
 import netCDF4 as NC
 
 
@@ -439,7 +439,10 @@ class MapPlotter():
 			cbar.set_label(**label)
 			if tick_font: cbar.ax.tick_params(labelsize=tick_font)
 			cbar.locator   = matplotlib.ticker.LinearLocator(numticks=numticks)
-			cbar.formatter = matplotlib.ticker.FormatStrFormatter(tick_format)
+			if tick_format == 'datetime':
+				cbar.formatter = matplotlib.ticker.FuncFormatter(lambda x, pos: datetime.fromtimestamp(x).strftime('%Y-%m-%d'))
+			else:
+				cbar.formatter = matplotlib.ticker.FormatStrFormatter(tick_format)
 			cbar.update_ticks()
 		return cbar
 
@@ -632,7 +635,7 @@ class MapPlotter():
 		# Plot
 		return self.plot(lon,lat,data,params=params,clear=clear,projection=projection,**kwargs)
 
-	def scatter(self,xc,yc,params=None,clear=True,marker=None,size=None,projection='PlateCarree',**kwargs):
+	def scatter(self,xc,yc,data=np.array([]),params=None,clear=True,marker=None,size=None,projection='PlateCarree',**kwargs):
 		'''
 		Main plotting function. Plots given the longitude, latitude and data.
 		An optional params dictionary can be inputted to control the plot.
@@ -650,6 +653,22 @@ class MapPlotter():
 
 		# Plot
 		transform  = getattr(ccrs,projection)(**kwargs)
-		self._plot = self._ax.scatter(xc,yc,transform=transform,marker=marker,s=size)
-
+		if len(data) == 0 : 
+			self._plot = self._ax.scatter(xc,yc,transform=transform,marker=marker,s=size)
+		else:
+			self._plot = self._ax.scatter(xc,yc, transform=transform, marker=marker,s=size,
+											c=data,
+											cmap=self.setColormap(cmap=params['cmap'],ncol=params['ncol']))
+			params['extend'] = 'neither'
+			# Colorbar
+			if params['draw_cbar']:
+				self.setColorbar(orientation=params['orientation'],
+							 	extend=params['extend'],
+							 	shrink=params['shrink'],
+							 	aspect=params['aspect'],
+							 	numticks=params['numticks'],
+							 	tick_format=params['tick_format'],
+							 	tick_font=params['tick_font'],
+							 	label=params['label']
+								)
 		return self._fig
