@@ -413,8 +413,8 @@ class MapPlotter():
 		Outputs:
 			> Colormap object
 		'''
-		cmap = plt.get_cmap(cmap,ncol,)
-		cmap.set_bad(color='w',alpha=1.)
+		cmap = plt.get_cmap(cmap,ncol)
+		cmap.set_bad(color='k',alpha=0.)
 		return cmap
 
 	def setColorbar(self,orientation='horizontal',extend='neither',shrink=1.0,aspect=20,
