@@ -1,4 +1,4 @@
-# Compile RK integrator
+# Compile MapPlotter
 #   Compile with g++ or Intel C++ Compiler (/opt/intel/bin/icpc)
 #   Compile with the most aggressive optimization setting (O3)
 #   Use the most pedantic compiler settings: must compile with no warnings at all
