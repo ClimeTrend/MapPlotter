@@ -8,6 +8,7 @@ from __future__ import print_function, division
 import sys, os, numpy as np
 
 from setuptools import setup, find_packages
+from MapPlotter import __VERSION__
 
 with open('README.md') as f:
 	readme = f.read()
@@ -15,9 +16,9 @@ with open('README.md') as f:
 # Main setup
 setup(
 	name="MapPlotter",
-	version="2.0.0",
+	version=__VERSION__,
     long_description=readme,
-    url='https://github.com/ArnauMiro/MEP.git',
+    url='https://github.com/ArnauMiro/MapPlotter',
     packages=find_packages(exclude=('Examples', 'doc')),
 	install_requires=['numpy','matplotlib','cartopy','datetime','netCDF4'],
 	scripts=['bin/map_plotter']
