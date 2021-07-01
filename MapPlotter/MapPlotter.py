@@ -92,7 +92,7 @@ class MapPlotter():
 		fill_value = getattr(D.variables[varname],'missing_value',fill_value)
 		fill_value = getattr(D.variables[varname],'_FillValue',fill_value)
 		D.close()
-		v[v >= fill_value] = mask_value
+		v[v == fill_value] = mask_value
 		return v
 
 	@staticmethod
