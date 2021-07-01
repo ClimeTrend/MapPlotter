@@ -89,6 +89,8 @@ class MapPlotter():
 		'''
 		D = NC.Dataset(fname,'r')
 		v = np.array(D.variables[varname])
+		fill_value = getattr(D.variables[varname],'missing_value',fill_value)
+		fill_value = getattr(D.variables[varname],'_FillValue',fill_value)
 		D.close()
 		v[v >= fill_value] = mask_value
 		return v
