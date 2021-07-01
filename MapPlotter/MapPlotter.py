@@ -594,7 +594,10 @@ class MapPlotter():
 		if len(data.shape) == 4:
 			data = data[iTime,iDepth,:,:]
 		else:
-			data = data[iDepth,:,:]
+			if iDepth < 0:
+				data = data[iTime,:,:]
+			else:
+				data = data[iDepth,:,:]
 		# Plot
 		return self.plot(lon,lat,data,params=params,clear=clear,projection=projection,**kwargs)
 

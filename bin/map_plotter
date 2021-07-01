@@ -44,7 +44,7 @@ args=argpar.parse_args()
 if not args.lon:   args.lon   = 'lon'
 if not args.lat:   args.lat   = 'lat'
 if not args.time:  args.time  = 0
-if not args.depth: args.depth = 0
+if not args.depth: args.depth = -1
 if not args.dpi:   args.dpi   = 300
 
 
