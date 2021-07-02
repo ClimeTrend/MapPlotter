@@ -242,6 +242,17 @@ class MapPlotter():
 		'''
 		return plt.axes(projection=self._projection)
 
+	def createSubplot(nrows, ncols, index, **kwargs):
+		'''
+		Create new subplot axes.
+
+		Outputs:
+			> Axes object		
+		'''
+		kwargs['projection'] = self._projection
+		if not self._fig: self._fig = self.createFigure()
+		return self._fig.add_subplot(nrows,ncols,index,**kwargs)
+
 	def createGridlines(self,xlim=[-180,180],ylim=[-90,90],axis_format='.1f',top=False,bottom=True,left=True,right=False,max_div=4,style={},gridlines_kwargs={'draw_labels':True,'linewidth':0}):
 		'''
 		Create gridlines for the current axes.
