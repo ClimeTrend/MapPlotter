@@ -21,9 +21,11 @@
 					"linewidth": 0, 
 					"draw_labels": true
 				},
-	"features": ["satellite"],
+	"features": ["tilemap"],
+	"map_style": "satellite",
 	"res": "50m",
 	"img": "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73726/world.topo.bathy.200406.3x5400x2700.png",
+	"img_format": "png",
 	"map_zoom": 9,
 	"title": [],
 	"xlabel": [],
