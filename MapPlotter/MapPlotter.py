@@ -178,6 +178,13 @@ class MapPlotter():
 		Wrapper to matplotlib.pyplot.show()
 		'''
 		plt.show()
+
+	@staticmethod
+	def suptitle(t,**kwargs):
+		'''
+		Wrapper to matplotlib.pyplot.suptitle(t,**kwargs)
+		'''
+		plt.suptitle(t,**kwargs)
 	
 	@staticmethod
 	def close():
