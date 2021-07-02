@@ -242,7 +242,7 @@ class MapPlotter():
 		'''
 		return plt.axes(projection=self._projection)
 
-	def createSubplot(self, nrows, ncols, index, **kwargs):
+	def createSubplot(self, *args, **kwargs):
 		'''
 		Create new subplot axes.
 
@@ -250,7 +250,7 @@ class MapPlotter():
 			> Axes object		
 		'''
 		kwargs['projection'] = self._projection
-		return plt.subplot(nrows,ncols,index,**kwargs)
+		return plt.subplot(*args,**kwargs)
 
 	def createGridlines(self,xlim=[-180,180],ylim=[-90,90],axis_format='.1f',top=False,bottom=True,left=True,right=False,max_div=4,style={},gridlines_kwargs={'draw_labels':True,'linewidth':0}):
 		'''
