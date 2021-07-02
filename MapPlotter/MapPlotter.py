@@ -242,7 +242,7 @@ class MapPlotter():
 		'''
 		return plt.axes(projection=self._projection)
 
-	def createSubplot(nrows, ncols, index, **kwargs):
+	def createSubplot(self, nrows, ncols, index, **kwargs):
 		'''
 		Create new subplot axes.
 
