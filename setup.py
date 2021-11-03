@@ -20,6 +20,6 @@ setup(
     long_description=readme,
     url='https://github.com/ArnauMiro/MapPlotter',
     packages=find_packages(exclude=('Examples', 'doc')),
-	install_requires=['numpy','matplotlib','cartopy','datetime','netCDF4'],
+	install_requires=['numpy','matplotlib','cartopy','cmocean','datetime','netCDF4'],
 	scripts=['bin/map_plotter']
 )

@@ -11,11 +11,10 @@
 # Arnau Miro, OGS (2019)
 from __future__ import print_function, division
 
-import json, numpy as np, matplotlib, matplotlib.pyplot as plt
+import json, numpy as np, matplotlib, matplotlib.pyplot as plt, netCDF4 as NC, cmocean
 import cartopy.crs as ccrs, cartopy.feature as cfeature, cartopy.io.img_tiles as cimgt
 from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
 from datetime import datetime
-import netCDF4 as NC
 
 
 class MapPlotter():
@@ -428,14 +427,21 @@ class MapPlotter():
 		Set the colormap.
 		
 		Inputs:
-			> cmap: Colormap name (default: 'coolwarm')
-				https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html
+			> cmap: Colormap name (default: 'coolwarm') or object
+				    https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html
+
+				    For cmocean colormaps start with cmo (eg. cmo.algae)
+				    https://matplotlib.org/cmocean/
+
 			> ncol: Number of colors on the colormap (default: 256)
 
 		Outputs:
 			> Colormap object
 		'''
-		cmap = plt.get_cmap(cmap,ncol)
+		if isinstance(cmap,'str'):
+			# This method from cmocean allows to recover both matplotlib colormaps
+			# and cmocean colormaps. For the latter start with cmo.
+			cmap = cmocean.cm.cm.get_cmap(cmap,ncol)
 		cmap.set_bad(color='k',alpha=0.)
 		return cmap
 
