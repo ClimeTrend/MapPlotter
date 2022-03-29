@@ -291,8 +291,10 @@ class MapPlotter():
 			gl.top_labels    = top
 			gl.bottom_labels = bottom
 			gl.xlabel_style  = style
+			gl.xlabel_style  = style
 			gl.left_labels   = left
 			gl.right_labels  = right
+			gl.ylabel_style  = style
 			gl.ylabel_style  = style
 		return gl
 
