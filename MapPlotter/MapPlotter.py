@@ -87,7 +87,7 @@ class MapPlotter():
 			> variable as a numpy array.
 		'''
 		D = NC.Dataset(fname,'r')
-		v = np.array(D.variables[varname]).filled(mask_value)
+		v = np.array(D.variables[varname].filled(mask_value))
 		return v
 
 	@staticmethod
