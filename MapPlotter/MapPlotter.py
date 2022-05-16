@@ -71,7 +71,7 @@ class MapPlotter():
 		return self._projection
 
 	@staticmethod
-	def loadNC(fname,varname,fill_value=1e20,mask_value=np.nan):
+	def loadNC(fname,varname,mask_value=np.nan):
 		'''
 		Load data from NETCDF file. This function is identical to
 		bit.sea commons.netcdf4 readfile. It will also filter any
@@ -80,7 +80,6 @@ class MapPlotter():
 		Inputs:
 			> fname:      NetCDF file name
 			> varname:    Variable name inside NetCDF file
-			> fill_value: NetCDF fill value (default: 1e20)
 			> mask_value: Value to replace the fill value (default: NaN)
 
 		Output:
