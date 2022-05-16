@@ -87,14 +87,7 @@ class MapPlotter():
 			> variable as a numpy array.
 		'''
 		D = NC.Dataset(fname,'r')
-		v = np.array(D.variables[varname])
-		fill_value = getattr(D.variables[varname],'missing_value',fill_value)
-		fill_value = getattr(D.variables[varname],'_FillValue'   ,fill_value)
-		D.close()
-		if fill_value >= 0:
-			v[v >= fill_value] = mask_value
-		else:
-			v[v <= fill_value] = mask_value
+		v = np.array(D.variables[varname]).filled(mask_value)
 		return v
 
 	@staticmethod
