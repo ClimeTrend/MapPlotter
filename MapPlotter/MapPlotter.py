@@ -669,8 +669,11 @@ class MapPlotter():
 		Inputs:
 			> xc:     Scatter x points
 			> yc:     Scatter y points
+			> data:   Color data to be plotted
 			> params: Optional parameter dictionary
 			> clear:  Clear axes before plotting
+			> marker: Marker for scatter plot
+			> size:   Size for the scatter plot
 
 		Outputs:
 			> Figure object
@@ -697,4 +700,45 @@ class MapPlotter():
 							 	tick_font=params['tick_font'],
 							 	label=params['label']
 								)
+		return self._fig
+
+	def quiver(self,xc,yc,uc,vc,data=None,params=None,clear=True,scale=None,projection='PlateCarree',**kwargs):
+		'''
+		Main plotting function. Plots given the longitude, latitude and data.
+		An optional params dictionary can be inputted to control the plot.
+
+		Inputs:
+			> xc:     X position of the arrow
+			> yc:     Y position of the arrow
+			> uc:     U component for the quiver
+			> yc:     V component for the quiver
+			> data:   Color data to be plotted. If not provided the modulus is used
+			> params: Optional parameter dictionary
+			> clear:  Clear axes before plotting
+
+		Outputs:
+			> Figure object
+		'''
+		self.plot_empty(params=params,clear=clear)
+
+		# Plot
+		transform  = getattr(ccrs,projection)(**kwargs)
+		if data is None: data = np.sqrt(uc*uc+vc*vc)
+
+		self._plot = self._ax.quiver(xc,yc,uc,vc,data,transform=transform,scale=scale,
+									 cmap=self.setColormap(cmap=params['cmap'],ncol=params['ncol']))
+
+		# Colorbar
+		#params['extend'] = 'neither'
+		if params['draw_cbar']:
+			self.setColorbar(orientation=params['orientation'],
+							 extend=params['extend'],
+							 shrink=params['shrink'],
+							 aspect=params['aspect'],
+							 numticks=params['numticks'],
+							 tick_format=params['tick_format'],
+							 tick_font=params['tick_font'],
+							 label=params['label']
+							)
+
 		return self._fig
