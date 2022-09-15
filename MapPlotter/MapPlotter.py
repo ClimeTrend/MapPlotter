@@ -726,11 +726,11 @@ class MapPlotter():
 		# Plot
 		transform  = getattr(ccrs,projection)(**kwargs)
 		if data is None: 
-			self._plot = self._ax.quiver(xc[::dsample],yc[::dsample],uc[::dsample],vc[::dsample],
+			self._plot = self._ax.quiver(xc[::dsample],yc[::dsample],uc[::dsample,::dsample],vc[::dsample,::dsample],
 										 transform=transform,scale=scale,color=color,
 										 cmap=self.setColormap(cmap=params['cmap'],ncol=params['ncol']))
 		else:
-			self._plot = self._ax.quiver(xc[::dsample],yc[::dsample],uc[::dsample],vc[::dsample],data[::dsample],
+			self._plot = self._ax.quiver(xc[::dsample],yc[::dsample],uc[::dsample,::dsample],vc[::dsample,::dsample],data[::dsample,::dsample],
 				                         transform=transform,scale=scale,
 										 cmap=self.setColormap(cmap=params['cmap'],ncol=params['ncol']))
 
