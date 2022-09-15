@@ -702,20 +702,21 @@ class MapPlotter():
 								)
 		return self._fig
 
-	def quiver(self,xc,yc,uc,vc,data=None,params=None,clear=True,scale=None,color=None,projection='PlateCarree',**kwargs):
+	def quiver(self,xc,yc,uc,vc,dsample=1,data=None,params=None,clear=True,scale=None,color=None,projection='PlateCarree',**kwargs):
 		'''
 		Main plotting function. Plots given the longitude, latitude and data.
 		An optional params dictionary can be inputted to control the plot.
 
 		Inputs:
-			> xc:     X position of the arrow
-			> yc:     Y position of the arrow
-			> uc:     U component for the quiver
-			> yc:     V component for the quiver
-			> data:   Color data to be plotted. If not provided the modulus is used
-			> params: Optional parameter dictionary
-			> clear:  Clear axes before plotting
-			> color:  Color to plot (dones not work when data is specified)
+			> xc:      X position of the arrow
+			> yc:      Y position of the arrow
+			> uc:      U component for the quiver
+			> yc:      V component for the quiver
+			> dsample: Downsample (>1 to downsample, use integers)
+			> data:    Color data to be plotted. If not provided the modulus is used
+			> params:  Optional parameter dictionary
+			> clear:   Clear axes before plotting
+			> color:   Color to plot (dones not work when data is specified)
 
 		Outputs:
 			> Figure object
@@ -725,10 +726,12 @@ class MapPlotter():
 		# Plot
 		transform  = getattr(ccrs,projection)(**kwargs)
 		if data is None: 
-			self._plot = self._ax.quiver(xc,yc,uc,vc,transform=transform,scale=scale,color=color,
+			self._plot = self._ax.quiver(xc[::dsample],yc[::dsample],uc[::dsample],vc[::dsample],
+										 transform=transform,scale=scale,color=color,
 										 cmap=self.setColormap(cmap=params['cmap'],ncol=params['ncol']))
 		else:
-			self._plot = self._ax.quiver(xc,yc,uc,vc,data,transform=transform,scale=scale,
+			self._plot = self._ax.quiver(xc[::dsample],yc[::dsample],uc[::dsample],vc[::dsample],data[::dsample],
+				                         transform=transform,scale=scale,
 										 cmap=self.setColormap(cmap=params['cmap'],ncol=params['ncol']))
 
 			# Colorbar
