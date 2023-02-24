@@ -464,6 +464,8 @@ class MapPlotter():
 			cbar.locator   = matplotlib.ticker.LinearLocator(numticks=numticks)
 			if tick_format == 'datetime':
 				cbar.formatter = matplotlib.ticker.FuncFormatter(lambda x, pos: datetime.fromtimestamp(x).strftime('%Y-%m-%d'))
+			if isinstance(tick_format,list):
+				cbar.formatter = matplotlib.ticker.FixedFormatter(tick_format)
 			else:
 				cbar.formatter = matplotlib.ticker.FormatStrFormatter(tick_format)
 			cbar.update_ticks()
