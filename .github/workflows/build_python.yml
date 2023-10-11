@@ -23,7 +23,7 @@ jobs:
           python-version: 3.8.5
       # Run compilation and deployment
       - name: Set up dependencies
-        run: make requirements
+        run: make deps requirements
       - name: Install
         run: make install
         # Run Examples

@@ -27,6 +27,9 @@ all:  requirements install
 
 # Python
 #
+deps: Deps/setup_geos_proj.sh
+	bash $<
+	
 requirements: requirements.txt
 	@${PIP} install -r $<
 
