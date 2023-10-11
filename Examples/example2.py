@@ -6,27 +6,16 @@
 # Arnau Miro, OGS (2019)
 from __future__ import print_function
 
-import numpy as np
+import os, numpy as np
 import MapPlotter as mp
 
-from commons import netcdf4 as nc4
-from commons.mask import Mask
 
 ## DATA PATHS ##
-fname    = '/media/internal/disk2TiB/data/MEDICANE/AVE_PHYS/ave.20180925-12:00:00.votemper.nc'
-varname  = 'votemper'
-maskfile = '/media/internal/disk2TiB/data/MEDICANE/meshmask.nc'
-idepth   = 0
-outfile  = 'example_MapPlotter_2.png'
+PATH     = os.path.dirname(os.path.abspath(__file__))
+fname    = os.path.join(PATH,'CMEMS.2020.thetao.nc')
+outfile  = 'example2.png'
 outdpi   = 300
 
-
-# Load data
-mask     = Mask(maskfile,zlevelsvar="nav_lev",ylevelsmatvar="gphit", xlevelsmatvar="glamt")
-print(mask.xlevels.shape,mask.ylevels.shape)
-data     = nc4.readfile(fname,varname)[0,:,:]
-data[data > 1e10] = np.nan # Handle the mask
-print(data.shape)
 
 # Instance MapPlotter class
 plotter = mp.MapPlotter(projection='PlateCarree')
@@ -47,12 +36,17 @@ params['xlabel']   = ['Longitude (deg)']
 params['ylabel']   = ['Latitude (deg)']
 # A bit of formatting on the colorbar
 params['cmap']     = 'jet'
-params['bounds']   = [20,25]
+params['bounds']   = [5,18]
 params['label']    = {'label':'Temperature (deg C)','weight':None,'style':None}
 print(params)
 
+# Load data
+data = plotter.loadNC(fname,'thetao',mask_value=np.nan)[0,0,:,:]
+lon  = plotter.loadNC(fname,'lon')
+lat  = plotter.loadNC(fname,'lat')
+
 # Plot
-plotter.plot(mask.xlevels,mask.ylevels,data,params=params)
+plotter.plot(lon,lat,data,params=params)
 
 # Save and show
 plotter.save(outfile,dpi=outdpi)

@@ -3,18 +3,20 @@
 # Example of how to use the MapPlotter class
 # on a custom created figure and axes.
 #
-# Arnau Miro, OGS (2019)
+# Arnau Miro, Elena Terzic (2023)
 from __future__ import print_function
 
-import numpy as np, matplotlib.pyplot as plt
+import os, numpy as np, matplotlib.pyplot as plt
 import MapPlotter as mp
 
+
 ## DATA PATHS ##
-fname    = '/media/internal/disk2TiB/data/MEDICANE/AVE_PHYS/ave.20180925-12:00:00.votemper.nc'
-varname  = 'votemper'
-maskfile = '/media/internal/disk2TiB/data/MEDICANE/meshmask.nc'
-idepth   = 0
-outfile  = 'example_MapPlotter_1.png'
+PATH     = os.path.dirname(os.path.abspath(__file__))
+fname    = os.path.join(PATH,'CMEMS.2020.thetao.nc')
+varname  = 'thetao'
+lonname  = 'lon'
+latname  = 'lat'
+outfile  = 'example1.png'
 outdpi   = 300
 
 
@@ -28,12 +30,14 @@ ax   = fig.add_subplot(1,1,1,projection=plotter.projection)
 
 # Create basic parameters dictionary
 params  = plotter.defaultParams()
+# DPI
+params['dpi']      = 100
 # Set figure and axes
 params['fig']      = fig
 params['ax']       = ax
 # Limits for the plot
-params['xlim']     = [-6, 37]
-params['ylim']     = [30, 46]
+params['xlim']     = [11, 21]
+params['ylim']     = [39, 46]
 # Which features need to be plotted?
 params['features'] = ['coastline','continents','rivers','image']
 params['img']      = 'https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73726/world.topo.bathy.200406.3x5400x2700.png'
@@ -43,12 +47,12 @@ params['xlabel']   = ['Longitude (deg)']
 params['ylabel']   = ['Latitude (deg)']
 # A bit of formatting on the colorbar
 params['cmap']     = 'jet'
-params['bounds']   = [10,30]
+params['bounds']   = [5,18]
 params['label']    = {'label':'Temperature (deg C)','weight':None,'style':None}
 print(params)
 
 # Plot
-plotter.plot_from_file_and_mask(fname,varname,maskfile,iDepth=idepth,params=params)
+plotter.plot_from_file(fname,varname,lonname,latname,iTime=0,iDepth=0,params=params)
 
 # Save and show
 plotter.save(outfile,dpi=outdpi)
