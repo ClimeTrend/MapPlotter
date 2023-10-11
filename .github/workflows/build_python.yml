@@ -14,6 +14,9 @@ defaults:
 jobs:    
   build_python:
     runs-on: ubuntu-20.04
+    env:
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:${PWD}/Deps/lib
+      C_INCLUDE_PATH:  $C_INCLUDE_PATH:${PWD}/Deps/include
     steps:
       - uses: actions/checkout@v3
       # Setup MPI and Python for this job

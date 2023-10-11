@@ -17,9 +17,10 @@ permissions:
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
-
+    env:
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:${PWD}/Deps/lib
+      C_INCLUDE_PATH:  $C_INCLUDE_PATH:${PWD}/Deps/include
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python

@@ -28,7 +28,7 @@ all:  requirements install
 # Python
 #
 deps: Deps/setup_geos_proj.sh
-	bash $<
+	@bash $<
 	
 requirements: requirements.txt
 	@${PIP} install -r $<
@@ -47,6 +47,11 @@ package-build:
 #
 clean:
 	-@cd MapPlotter; rm -rf __pycache__
+clean_deps:
+	-@rm -rf Deps/bin
+	-@rm -rf Deps/include
+	-@rm -rf Deps/lib
+	-@rm -rf Deps/share
 uninstall: clean
 	-@${PIP} uninstall MapPlotter
 	-@rm -rf MapPlotter.egg-info
