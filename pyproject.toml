@@ -110,6 +110,7 @@ dependencies = [
   "cmocean",
   "datetime",
   "netCDF4",
+  "requests",
 ]
 
 # List additional groups of dependencies here (e.g. development
@@ -158,5 +159,6 @@ requires = [
   "cmocean",
   "datetime",
   "netCDF4",
+  "requests",
 ]
 build-backend = "setuptools.build_meta"

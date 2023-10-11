@@ -4,3 +4,4 @@ cartopy
 cmocean
 datetime
 netCDF4
+requests
