@@ -81,9 +81,6 @@ plotter.plot(lon,lat,data,params=params)
 # To plot data from NetCDF data
 plotter.plot_from_file(filename,varname,lonname,latname,iTime=0,iDepth=0,params=params)
 
-# To plot data from NetCDF data with meshmask
-plotter.plot_from_file_and_mask(filename,varname,maskfile,iTime=0,iDepth=0,masklon="glamt",masklat="gphit",params=params)
-
 # To see the data
 plotter.save('outfile.png',dpi=300)
 plotter.show() # wrapper of plt.show()
