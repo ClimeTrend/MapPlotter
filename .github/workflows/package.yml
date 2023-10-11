@@ -17,13 +17,13 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: '3.x'
+        python-version: 3.8.5
     - name: Install dependencies
       run: |
         sudo apt install libgeos-dev libproj-dev
