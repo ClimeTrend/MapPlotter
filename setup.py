@@ -22,7 +22,7 @@ setup(
 	maintainer_email   = 'arnau.miro@upc.edu',
     long_description   = readme,
     url                = 'https://github.com/ArnauMiro/MapPlotter',
-    packages           = find_packages(exclude=('Examples', 'doc', 'Deps')),
+    packages           = find_packages(exclude=('Examples', 'doc')),
 	install_requires   = ['numpy','matplotlib','cartopy','cmocean','datetime','netCDF4','requests'],
 	scripts            = ['bin/map_plotter']
 )
