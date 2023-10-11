@@ -46,6 +46,4 @@ Map Plotter is a toolkit that provides a framework for
 	  -o OUT, --outfile OUT    Output file name
 	  --dpi DPI                Output file DPI (default: 300)
 '''
-__VERSION__ = "2.0.0"
-
 from .MapPlotter import MapPlotter

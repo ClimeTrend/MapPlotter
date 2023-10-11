@@ -8,7 +8,6 @@ from __future__ import print_function, division
 import sys, os, numpy as np
 
 from setuptools import setup, find_packages
-from MapPlotter import __VERSION__
 
 with open('README.md') as f:
 	readme = f.read()
@@ -16,7 +15,7 @@ with open('README.md') as f:
 # Main setup
 setup(
 	name               = "MapPlotter",
-	version            = __VERSION__,
+	version            = "2.0.0",
 	author             = 'Arnau Miro, Elena Terzić',
 	author_email       = 'arnau.miro@upc.edu, elena.terzic@proton.me',
 	maintainer         = 'Arnau Miro',
