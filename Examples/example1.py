@@ -46,7 +46,7 @@ params['title']    = ['Temperature Map',{'weight':'bold','style':'italic'}]
 params['xlabel']   = ['Longitude (deg)']
 params['ylabel']   = ['Latitude (deg)']
 # A bit of formatting on the colorbar
-params['cmap']     = 'jet'
+params['cmap']     = 'cmo.thermal'
 params['bounds']   = [5,18]
 params['label']    = {'label':'Temperature (deg C)','weight':None,'style':None}
 print(params)
