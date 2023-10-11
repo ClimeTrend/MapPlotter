@@ -434,9 +434,10 @@ class MapPlotter():
 			> Colormap object
 		'''
 		if isinstance(cmap,str):
-			# This method from cmocean allows to recover both matplotlib colormaps
-			# and cmocean colormaps. For the latter start with cmo.
-			cmap = cmocean.cm.cm.get_cmap(cmap,ncol)
+			# Check if we are using cmocean or matplotlib
+			module = cmocean if cmap in cmocean.cm.cmapnames else matplotlib
+			# Get the colormap from the module
+			cmap = getattr(module.cm,cmap).resampled(ncol)
 		cmap.set_bad(color='k',alpha=0.)
 		return cmap
 
