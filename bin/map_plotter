@@ -19,7 +19,7 @@
 #   -o OUT, --outfile OUT    Output file name
 #   --dpi DPI                Output file DPI (default: 300)
 #
-# Arnau Miro, Elena Terzic (2021)
+# Arnau Miro, Elena Terzic (2023)
 from __future__ import print_function
 
 import argparse

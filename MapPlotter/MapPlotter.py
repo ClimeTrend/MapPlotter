@@ -8,7 +8,7 @@
 #	pip uninstall shapely
 #	pip install --no-binary :all: shapely
 #
-# Arnau Miro, OGS (2019)
+# Arnau Miro, Elena Terzic (2023)
 from __future__ import print_function, division
 
 import json, numpy as np, matplotlib, matplotlib.pyplot as plt, netCDF4 as NC, cmocean
