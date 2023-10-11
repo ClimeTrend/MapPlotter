@@ -1,3 +1,6 @@
+[![Build status](https://github.com/ArnauMiro/MapPlotter/actions/workflows/build_python.yml/badge.svg)](https://github.com/ArnauMiro/MapPlotter/actions)
+[![License](https://img.shields.io/badge/license-GPL3-orange)](https://opensource.org/license/gpl-3-0/)
+
 # Map Plotter
 
 Map Plotter is a toolkit that provides a framework for 2D map plots of data and NetCDF files. It consists of a python class (_MapPlotter_) that interfaces with [cartopy](https://scitools.org.uk/cartopy/docs/latest/) to generate beautiful maps.

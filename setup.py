@@ -15,11 +15,15 @@ with open('README.md') as f:
 
 # Main setup
 setup(
-	name="MapPlotter",
-	version=__VERSION__,
-    long_description=readme,
-    url='https://github.com/ArnauMiro/MapPlotter',
-    packages=find_packages(exclude=('Examples', 'doc')),
-	install_requires=['numpy','matplotlib','cartopy','cmocean','datetime','netCDF4'],
-	scripts=['bin/map_plotter']
+	name               = "MapPlotter",
+	version            = __VERSION__,
+	author             = 'Arnau Miro, Elena Terzić',
+	author_email       = 'arnau.miro@upc.edu, elena.terzic@proton.me',
+	maintainer         = 'Arnau Miro',
+	maintainer_email   = 'arnau.miro@upc.edu',
+    long_description   = readme,
+    url                = 'https://github.com/ArnauMiro/MapPlotter',
+    packages           = find_packages(exclude=('Examples', 'doc')),
+	install_requires   = ['numpy','matplotlib','cartopy','cmocean','datetime','netCDF4'],
+	scripts            = ['bin/map_plotter']
 )
