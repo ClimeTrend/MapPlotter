@@ -14,9 +14,6 @@ defaults:
 jobs:    
   build_python:
     runs-on: ubuntu-20.04
-    env:
-      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:${PWD}/Deps/lib
-      C_INCLUDE_PATH:  $C_INCLUDE_PATH:${PWD}/Deps/include
     steps:
       - uses: actions/checkout@v3
       # Setup MPI and Python for this job
@@ -26,7 +23,9 @@ jobs:
           python-version: 3.8.5
       # Run compilation and deployment
       - name: Set up dependencies
-        run: make deps requirements
+        run: |
+          sudo apt install libgeos-dev libproj-dev
+          make requirements
       - name: Install
         run: make install
         # Run Examples
