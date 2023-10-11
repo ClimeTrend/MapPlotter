@@ -35,7 +35,7 @@ jobs:
       run: |
         sudo apt install libgeos-dev libproj-dev
         make requirements
-        pip install --reinstall --no-binary :all: shapely
+        pip install --ignore-installed --no-binary :all: shapely
         make package-build
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
