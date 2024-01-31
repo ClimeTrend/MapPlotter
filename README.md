@@ -1,5 +1,6 @@
 [![Build status](https://github.com/ArnauMiro/MapPlotter/actions/workflows/build_python.yml/badge.svg)](https://github.com/ArnauMiro/MapPlotter/actions)
 [![License](https://img.shields.io/badge/license-GPL3-orange)](https://opensource.org/license/gpl-3-0/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10598154.svg)](https://doi.org/10.5281/zenodo.10598154)
 
 # Map Plotter
 
