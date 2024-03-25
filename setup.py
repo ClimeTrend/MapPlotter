@@ -15,7 +15,7 @@ with open('README.md') as f:
 # Main setup
 setup(
 	name               = "MapPlotter",
-	version            = "2.0.0",
+	version            = "2.1.0",
 	author             = 'Arnau Miro, Elena Terzić',
 	author_email       = 'arnau.miro@upc.edu, elena.terzic@proton.me',
 	maintainer         = 'Arnau Miro',
