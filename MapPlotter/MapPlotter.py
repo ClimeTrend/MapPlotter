@@ -122,7 +122,7 @@ class MapPlotter():
 			'img'         : None,
 			'img_format'  : 'png',
 			'map_zoom'    : 9,
-			'map_style'   : 'satellite',
+			'map_kind'    : {'tile':'GoogleTiles','arguments':{'style':'satellite'}},
 			# Title and labels
 			'title'       : [], # [title,kwargs]
 			'xlabel'      : [],
@@ -411,10 +411,11 @@ class MapPlotter():
 			else:
 				self._ax.stock_img()
 
-	def drawTileMap(self,zoom,style='satellite'):
+	def drawTileMap(self,zoom,kind):
 		'''
+		Draw a tile using a cartopy tile service
 		'''
-		tile = cimgt.GoogleTiles(style=style)
+		tile = getattr(cimgt,kind['tile'])(**kind['arguments'])
 		self._ax.add_image(tile,zoom)
 
 	def setColormap(self,cmap='coolwarm',ncol=256):
@@ -527,7 +528,7 @@ class MapPlotter():
 		if 'image' in params['features']:
 			self.drawBackground(img=params['img'],img_fmt=params['img_format'])
 		if 'tilemap' in params['features']:
-			self.drawTileMap(params['map_zoom'],style=params['map_style'])
+			self.drawTileMap(params['map_zoom'],kind=params['map_kind'])
 
 		return self._fig
 
