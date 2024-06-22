@@ -439,7 +439,7 @@ class MapPlotter():
 			module = cmocean if cmap in cmocean.cm.cmapnames else matplotlib
 			# Get the colormap from the module
 			cmap = getattr(module.cm,cmap).resampled(ncol)
-		cmap.set_bad(color='k',alpha=0.)
+			cmap.set_bad(color='k',alpha=0.)
 		return cmap
 
 	def setColorbar(self,orientation='horizontal',extend='neither',shrink=1.0,aspect=20,
