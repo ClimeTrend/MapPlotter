@@ -470,6 +470,8 @@ class MapPlotter():
 				cbar.formatter = matplotlib.ticker.FixedFormatter(tick_format)
 			else:
 				cbar.formatter = matplotlib.ticker.FormatStrFormatter(tick_format)
+			extrem = np.max(np.abs(self._plot.get_array()))
+			cbar.set_ticks([-extrem,0.,extrem])
 			cbar.update_ticks()
 		return cbar
 
